@@ -1,4 +1,6 @@
 {
     "mongoURI":"mongodb+srv://harsh2:harsh@cluster0-sufhs.gcp.mongodb.net/DevConnect?retryWrites=true&w=majority",
-    "jwtSecret":"mysecrettoken"
+    "jwtSecret":"mysecrettoken",
+    "githubClientId":"46f02754590f30497a2e",
+    "githubSecret":"7eff3166c5bd4bef5a65eb5dec294658951904a6"
 }
