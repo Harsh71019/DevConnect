@@ -1,3 +1,4 @@
 {
-    "mongoURI":"mongodb+srv://harsh2:harsh@cluster0-sufhs.gcp.mongodb.net/DevConnect?retryWrites=true&w=majority"
+    "mongoURI":"mongodb+srv://harsh2:harsh@cluster0-sufhs.gcp.mongodb.net/DevConnect?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken"
 }
