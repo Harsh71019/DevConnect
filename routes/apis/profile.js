@@ -8,6 +8,7 @@ const { route } = require("./auth");
 const request = require("request");
 const { response } = require("express");
 const config = require("config");
+const Post = require("../../models/Post");
 //@route  GET api/profile/me
 //@desc   test route
 //@access  Private
@@ -118,7 +119,7 @@ router.post(
 
 router.get("/", async (req, res) => {
   try {
-    const profiles = await Profile.find().populate("users", ["name", "avatar"]);
+    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -155,6 +156,9 @@ router.delete("/", auth, async (req, res) => {
   try {
     //Remove Profile
     //Remove Users Posts
+
+    await Post.deleteMany({ user: req.user.id });
+
     await Profile.findOneAndRemove({ user: req.user.id });
     //Remove User
     await User.findOneAndRemove({ _id: req.user.id });
@@ -327,12 +331,12 @@ router.get("/github/:username", (req, res) => {
       )}&client_secret=${config.get("githubSecret")}`,
       method: "GET",
       headers: { "user-agents": "node.js" },
-      headers: {'user-agent': 'node.js'}
+      headers: { "user-agent": "node.js" },
     };
     request(options, (error, response, body) => {
       if (error) console.error(error);
       if (response.statusCode !== 200) {
-       return res.status(404).json({ msg: "No github user found" });
+        return res.status(404).json({ msg: "No github user found" });
       }
       res.json(JSON.parse(body));
     });
