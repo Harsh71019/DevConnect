@@ -9,6 +9,8 @@ const request = require("request");
 const { response } = require("express");
 const config = require("config");
 const Post = require("../../models/Post");
+
+
 //@route  GET api/profile/me
 //@desc   test route
 //@access  Private
@@ -135,7 +137,7 @@ router.get("/user/:user_id", async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id,
-    }).populate("users", ["name", "avatar"]);
+    }).populate("user", ["name", "avatar"]);
     if (!profile)
       return res.status(400).json({ msg: "Profile not found for this user" });
     res.json(profile);

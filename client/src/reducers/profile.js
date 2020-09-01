@@ -3,7 +3,6 @@ import {
   UPDATE_PROFILE,
   PROFILE_ERROR,
   CLEAR_PROFILE,
-  DELETE_ACCOUNT,
   GET_PROFILES,
   GET_REPOS,
 } from "../actions/types";

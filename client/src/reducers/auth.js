@@ -7,7 +7,6 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   DELETE_ACCOUNT,
-  PROFILE_ERROR,
 } from "../actions/types";
 
 const initialState = {
